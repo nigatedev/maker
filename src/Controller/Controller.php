@@ -6,8 +6,6 @@
  */
 namespace Nigatedev\Maker\Controller;
 
-use Nigatedev\Core\App;
-
 /**
  * ControllerMaker
  * 
@@ -65,12 +63,12 @@ class Controller {
 
     preg_match("/([^a-zA-Z0-9])/", $className, $match);
     if (count($match) > 0) {
-    return  $this->error["cname"] = "The class name should not contains special chars.";
+    return  $this->error["cname"] = "The class name shouldn't contains special chars.";
     }
     if (strlen($className) > 10 && substr($className, -10) === "Controller") {
      return $this->constructor["cname"] = $className;
     }
-    return  $this->error["cname"] = "The class name should ended with [Controller] ";
+    return  $this->error["cname"] = "The class name must end with [Controller]. ";
   }
   /**
    * @return an existence template / Model of controller
@@ -85,12 +83,12 @@ class Controller {
    */
   public function make(array $controller) {
     
-    if (is_dir(dirname(dirname(__DIR__))."/Controller/")) {
+    if (is_dir(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/")) {
 
       if (is_file(__DIR__ ."/ModelController.php")) {
-        if(file_put_contents(dirname(dirname(__DIR__))."/Controller/".$controller["cname"].".php", str_ireplace("ModelController", $controller["cname"], $this->getModel())))
+        if(file_put_contents(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/".$controller["cname"].".php", str_ireplace("ModelController", $controller["cname"], $this->getModel())))
         {
-          $this->success["cname"] =  "Your new Controller ".$controller["cname"]." was created successfully !";
+          $this->success["cname"] = $controller["cname"]." controller was created successfully !";
         }
       }
     }
