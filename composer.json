@@ -2,7 +2,7 @@
     "name": "nigatedev/maker",
     "description": "The Nigatedev PHP framework maker",
     "type": "library",
-    "license": "TIM",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Nigatedev\\Maker\\": "src/"
