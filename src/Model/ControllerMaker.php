@@ -4,7 +4,7 @@
  * 
  * (c) Abass Ben Cheik <abass@todaysdev.com>
  */
-namespace Nigatedev\Maker\Controller;
+namespace Nigatedev\Maker\Model;
 
 /**
  * ControllerMaker
@@ -13,7 +13,7 @@ namespace Nigatedev\Maker\Controller;
  * 
  * @author Abass Ben Cheik <abass@todaysdev.com>
  */
-class Controller {
+class ControllerMaker {
   
   /**
    * @var string
@@ -74,7 +74,7 @@ class Controller {
    * @return an existence template / Model of controller
    */
   public function getModel() {
-    $model = file_get_contents(__DIR__ ."/ModelController.php");
+    $model = file_get_contents(__DIR__ ."/ControllerModel.php");
     return $model;
   }
   
@@ -85,8 +85,8 @@ class Controller {
     
     if (is_dir(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/")) {
 
-      if (is_file(__DIR__ ."/ModelController.php")) {
-        if(file_put_contents(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/".$controller["cname"].".php", str_ireplace("ModelController", $controller["cname"], $this->getModel())))
+      if (is_file(__DIR__ ."/ControllerModel.php")) {
+        if(file_put_contents(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/".$controller["cname"].".php", str_ireplace("ControllerModel", $controller["cname"], $this->getModel())))
         {
           $this->success["cname"] = $controller["cname"]." controller was created successfully !";
         }

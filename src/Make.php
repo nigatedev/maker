@@ -7,7 +7,7 @@
  */
 namespace Nigatedev\Maker;
 
-use Nigatedev\Maker\Controller\Controller as ControllerMaker;
+use Nigatedev\Maker\Model\ControllerMaker;
 
 
 /**
@@ -18,9 +18,9 @@ use Nigatedev\Maker\Controller\Controller as ControllerMaker;
 class Make 
 {
   /**
-   * @var Controller $controller
+   * @var ControllerMaker $controllerMaker
    */
-   public ControllerMaker $controller;
+   public ControllerMaker $controllerMaker;
    
   /**
    * @var string $arg
@@ -29,7 +29,7 @@ class Make
    
    public function __construct()
    {
-     $this->controller = new ControllerMaker();
+     $this->controllerMaker = new ControllerMaker();
    }
    
    /**
@@ -44,11 +44,11 @@ class Make
            if (isset($this->arg[2])) {
              $warning = readline("Generate [".$this->arg[2]. "] Controller ? (Y [yes] / N [No]) \n> ");
              if (strtoupper($warning) === "Y") {
-               $this->controller->makeController($this->arg[2]);
+               $this->controllerMaker->makeController($this->arg[2]);
              } else {echo "Canceled !";}
            } else {
              $this->arg[2] = readline("Controller class name E.g: HomeController \n>  ");
-             $this->controller->makeController($this->arg[2]);
+             $this->controllerMaker->makeController($this->arg[2]);
            }
            break;
          case "-h":
