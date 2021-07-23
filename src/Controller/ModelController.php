@@ -5,7 +5,7 @@
  * (c) Abass Ben Cheik <abass@todaysdev.com>
  * 
  */
-namespace Nigatedev\Controller;
+namespace App\Controller;
 
 /**
  * ModelController class
