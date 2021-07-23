@@ -79,14 +79,16 @@ class ControllerMaker {
   }
   
   /**
-   * Generator of controller class
+   * Final controller class generator
    */
   public function make(array $controller) {
-    
-    if (is_dir(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/")) {
-
+    $dirName = dirname(dirname(dirname(dirname(dirname(__DIR__)))));
+    if (is_file($dirName."/src/Controller/".$controller["cname"].".php")) {
+      die("Error: Can't create an existence controller class ".$controller["cname"]);
+    }
+  if (is_dir($dirName."/src/Controller/")) {
       if (is_file(__DIR__ ."/ControllerModel.php")) {
-        if(file_put_contents(dirname(dirname(dirname(dirname(dirname(__DIR__)))))."/src/Controller/".$controller["cname"].".php", str_ireplace("ControllerModel", $controller["cname"], $this->getModel())))
+        if(file_put_contents($dirName."/src/Controller/".$controller["cname"].".php", str_ireplace("ControllerModel", $controller["cname"], $this->getModel())))
         {
           $this->success["cname"] = $controller["cname"]." controller was created successfully !";
         }
