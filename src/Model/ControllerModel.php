@@ -5,6 +5,8 @@
  
 namespace App\Controller;
 
+use Nigatedev\Core\Controller\Controller;
+
 /**
  * undocumented class
  *
@@ -12,10 +14,14 @@ namespace App\Controller;
  * @subpackage default
  * @author `g:snips_author`
  */
-class ControllerModel {
+class ControllerModel extends Controller {
+  
   
   public function index()
   {
-    return "Hello ControllerModel";
+    return $this->render("index", [
+      "cName" => "ControllerModel",
+      "cPath" => "src/Controller/ControllerModel.php"
+      ]);  
   }
 }

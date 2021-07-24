@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /*
  * This file is part of Nigatedev PHP framework package.
@@ -41,15 +42,7 @@ class Make
      if(is_array($this->arg) && isset($this->arg[1])){
        switch ($this->arg[1]) {
          case 'make:controller':
-           if (isset($this->arg[2])) {
-             $warning = readline("Generate [".$this->arg[2]. "] Controller ? (Y [yes] / N [No]) \n> ");
-             if (strtoupper($warning) === "Y") {
-               $this->controllerMaker->makeController($this->arg[2]);
-             } else {echo "Canceled !";}
-           } else {
-             $this->arg[2] = readline("Controller class name E.g: HomeController \n>  ");
-             $this->controllerMaker->makeController($this->arg[2]);
-           }
+           $this->isController($this->arg);
            break;
          case "-h":
            echo "Sorry no help has been written yet";
@@ -64,5 +57,19 @@ class Make
      } else {
        echo "Type --help or -h for basic usage";
      }
+   }
+   
+   public function isController(array $controller)
+   {
+     if (isset($controller[2]) && !isset($controller[3])) {
+             $warning = readline("Generate [".$controller[2]. "] Controller ? (Y [yes] / N [No]) \n> ");
+             if (strtoupper($warning) === "Y") {
+               $this->controllerMaker->makeController($controller[2]);
+             } else {echo "Canceled !";}
+           } else {
+             $controller[2] = readline("Controller class name E.g: HomeController \n>  ");
+             $this->controllerMaker->makeController($controller[2]);
+           }
+           
    }
 }
