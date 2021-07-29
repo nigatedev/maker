@@ -14,14 +14,15 @@ use Nigatedev\Core\Controller\Controller;
  * @subpackage default
  * @author `g:snips_author`
  */
-class ControllerModel extends Controller {
+class ControllerModel extends Controller
+{
   
   
-  public function index()
-  {
-    return $this->render("index", [
-      "cName" => "ControllerModel",
-      "cPath" => "src/Controller/ControllerModel.php"
-      ]);  
-  }
+    public function index()
+    {
+        return $this->render("index", [
+        "cName" => "ControllerModel",
+        "cPath" => "src/Controller/ControllerModel.php"
+        ]);
+    }
 }
