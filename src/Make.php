@@ -43,6 +43,12 @@ class Make
                 case 'make:controller':
                     $this->isController($this->arg);
                     break;
+                case 'make:c':
+                    $this->isController($this->arg);
+                    break;
+                case 'm:c':
+                    $this->isController($this->arg);
+                    break;
                 case "-h":
                     echo "Sorry no help has been written yet";
                     break;
