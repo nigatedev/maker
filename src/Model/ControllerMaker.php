@@ -53,7 +53,7 @@ class ControllerMaker
 
   /**
   * @param string $className
-  * 
+  *
   * @return void
   */
     public function makeController($className)
@@ -94,7 +94,7 @@ class ControllerMaker
   * Get Model controller
   *
   * @param string $model
-  * 
+  *
   * @return string
   */
     public function getModel($model)
@@ -105,9 +105,9 @@ class ControllerMaker
 
   /**
   * Final controller class generator
-  * 
+  *
   * @param string[] $controller
-  * 
+  *
   * @return void
   */
     public function make($controller)
@@ -133,7 +133,7 @@ class ControllerMaker
      * @param string|array $find
      * @param string|array $replace
      * @param string|array $content
-     * 
+     *
      * @return string
      */
     public function lowerAndReplace($find, $replace, $content)

@@ -36,7 +36,7 @@ class Make
     * Execute command or throw command Unkwon exception
     *
     * @param array[] $arg
-    * 
+    *
     * @return void
     */
     public function make($arg)
@@ -70,7 +70,7 @@ class Make
     
     /**
      * @param array[] $controller
-     * 
+     *
      * @return void
      */
     public function isController($controller)
