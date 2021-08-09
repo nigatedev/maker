@@ -22,19 +22,19 @@ class ControllerMaker
     private string $className;
 
   /**
-  * @var array|null
+  * @var string[] $constructor
   */
-    private array $constructor = [];
+    private $constructor = [];
 
   /**
-  * @var array|null
+  * @var string[] $error
   */
-    private array $error = [];
+    private $error = [];
 
   /**
-  * @var array|null
+  * @var string[] $success
   */
-    private array $success = [];
+    private $success = [];
 
   /**
   * @var bool
@@ -53,6 +53,8 @@ class ControllerMaker
 
   /**
   * @param string $className
+  * 
+  * @return void
   */
     public function makeController($className)
     {
@@ -69,6 +71,7 @@ class ControllerMaker
   *
   * @param string $className
   *
+  * @return bool
   */
     public function isSafeClassName($className)
     {
@@ -88,7 +91,11 @@ class ControllerMaker
     }
 
   /**
-  * @return an existence template / Model of controller
+  * Get Model controller
+  *
+  * @param string $model
+  * 
+  * @return string
   */
     public function getModel($model)
     {
@@ -98,8 +105,12 @@ class ControllerMaker
 
   /**
   * Final controller class generator
+  * 
+  * @param string[] $controller
+  * 
+  * @return void
   */
-    public function make(array $controller)
+    public function make($controller)
     {
         $cName = $controller["cname"];
         $cDir = $this->dirName."/src/Controller/";
@@ -117,9 +128,16 @@ class ControllerMaker
             $this->success["cname"] = $cName." controller was created successfully !";
         }
     }
-
-    public function lowerAndReplace($find, $replace, $in)
+    
+    /**
+     * @param string|array $find
+     * @param string|array $replace
+     * @param string|array $content
+     * 
+     * @return string
+     */
+    public function lowerAndReplace($find, $replace, $content)
     {
-        return strtolower(str_replace($find, $replace, $in));
+        return strtolower(str_replace($find, $replace, $content));
     }
 }

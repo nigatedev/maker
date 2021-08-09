@@ -23,9 +23,9 @@ class Make
     public ControllerMaker $controllerMaker;
    
   /**
-   * @var string $arg
+   * @var array[] $arg
    */
-    public array $arg;
+    public $arg;
    
     public function __construct()
     {
@@ -33,9 +33,13 @@ class Make
     }
    
    /**
-    * @return Execute command or thrown command Unkwon exception
+    * Execute command or throw command Unkwon exception
+    *
+    * @param array[] $arg
+    * 
+    * @return void
     */
-    public function make(array $arg)
+    public function make($arg)
     {
         $this->arg = $arg;
         if (is_array($this->arg) && isset($this->arg[1])) {
@@ -63,8 +67,13 @@ class Make
             echo "Type --help or -h for basic usage";
         }
     }
-   
-    public function isController(array $controller)
+    
+    /**
+     * @param array[] $controller
+     * 
+     * @return void
+     */
+    public function isController($controller)
     {
         if (isset($controller[2]) && !isset($controller[3])) {
              $warning = readline("Generate [".$controller[2]. "] Controller ? (Y [yes] / N [No]) \n> ");
